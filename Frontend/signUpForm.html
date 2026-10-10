@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<link rel="icon" type="image/png" href="/images/logo.png">
+<link rel="stylesheet" href="/css/signUpForm.css">
+</head>
+<body>
+
+<div class="card">
+  <div id="formWrap">
+    <h1>Create your account</h1>
+    <p class="sub">It only takes a minute.</p>
+
+    <form id="signupForm">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name">
+        <div class="error-msg" id="nameError"></div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required>
+        <div class="error-msg" id="emailError"></div>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <div class="error-msg" id="passwordError"></div>
+      </div>
+
+      <div class="field">
+        <label for="confirm">Confirm password</label>
+        <input type="password" id="confirm" name="confirm" required>
+        <div class="error-msg" id="confirmError"></div>
+      </div>
+
+      <button type="submit">Sign up</button>
+    </form>
+  </div>
+  <br>
+  <div>
+    <a href="login">Already have an account? Login</a>
+  </div>
+
+  <div class="success" id="successMsg">
+    <div class="icon">✓</div>
+    <h1>You're all set</h1>
+    <p class="sub">Your account has been created.</p>
+  </div>
+</div>
+
+<script src="/js/signUpForm.js"></script>
+</body>
+</html>

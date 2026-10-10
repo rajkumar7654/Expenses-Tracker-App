@@ -1,0 +1,13 @@
+Backend/node_modules/
+node_modules/
+Backend/.env
+Backend/cert/
+*.log
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+
+npm-debug.log
+.env

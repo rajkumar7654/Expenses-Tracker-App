@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.box {
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+button {
+    padding: 12px 20px;
+    cursor: pointer;
+}

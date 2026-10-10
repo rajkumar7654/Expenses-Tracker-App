@@ -1,0 +1,11 @@
+{
+  "name": "expense-tracker-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd Backend && npm start",
+    "install": "cd Backend && npm install"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Expense Tracker Application"
+}

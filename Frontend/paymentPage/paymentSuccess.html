@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Payment Result</title>
+
+    <link rel="stylesheet" href="/css/paymentSuccess.css">
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Payment Completed</h1>
+
+        <p>Your Cashfree payment was processed.</p>
+
+        <p>
+            Order ID:
+            <strong id="orderId"></strong>
+        </p>
+
+        <button onclick="checkStatus()">
+            Check Payment Status
+        </button>
+
+        <p id="status"></p>
+
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order_id');
+        document.getElementById('orderId').textContent = orderId || 'N/A';
+    </script>
+    <script src="/js/paymentJS/paymentSuccess.js"></script>
+
+</body>
+
+</html>
