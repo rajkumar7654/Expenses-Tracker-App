@@ -1,5 +1,5 @@
 const loginForm = document.getElementById('loginForm');
-const API = window.location.origin;
+const API = 'http://localhost:3000';
 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -29,9 +29,9 @@ loginForm.addEventListener('submit', async (e) => {
 
             // Redirect based on premium status
             if (data.isPremium) {
-                window.location.href = '/premium-dashboard';
+                window.location.href = 'premium-dashboard.html';
             } else {
-                window.location.href = '/dashboard';
+                window.location.href = 'dashboard.html';
             }
         } else {
             alert('Login failed: ' + data.message);

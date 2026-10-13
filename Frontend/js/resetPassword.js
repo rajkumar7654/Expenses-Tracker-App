@@ -1,3 +1,4 @@
+const API_URL = 'http://localhost:3000';
 document.getElementById('resetForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -35,7 +36,7 @@ document.getElementById('resetForm').addEventListener('submit', async (e) => {
     const requestId = pathParts[pathParts.length - 1];
 
     try {
-        const response = await fetch(`/forgetpassword/resetpassword/${requestId}`, {
+        const response = await fetch(`${API_URL}/forgetpassword/resetpassword/${requestId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

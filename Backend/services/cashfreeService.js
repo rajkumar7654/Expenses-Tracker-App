@@ -11,7 +11,7 @@ const cashfree = new Cashfree(
 
 
 // CREATE CASHFREE PAYMENT ORDER
-const createOrder = async (amount, customerName, customerEmail, customerPhone) => {
+const createOrder = async (amount, customerName, customerEmail, customerPhone, userEmail) => {
 
     try {
 
@@ -41,7 +41,7 @@ const createOrder = async (amount, customerName, customerEmail, customerPhone) =
 
             order_meta: {
 
-                return_url: `${process.env.APP_URL || 'http://localhost:3000'}/payment/success?order_id=${orderId}`
+                return_url: `${process.env.APP_URL || 'http://localhost:3000'}/payment/success?order_id=${orderId}&user_email=${encodeURIComponent(userEmail)}`
             }
         };
 

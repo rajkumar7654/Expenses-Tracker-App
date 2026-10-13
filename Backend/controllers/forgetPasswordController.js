@@ -4,14 +4,6 @@ const User = require('../models/signUpModel');
 const ForgotPasswordRequest = require('../models/forgotPasswordRequestModel');
 const bcrypt = require('bcrypt');
 
-const getForgetPassword = (req, res) => {
-    try {
-        return res.sendFile(path.join(__dirname, '../../Frontend/forgetPassword.html'));
-    } catch (error) {
-        console.error("Error loading forget password page:", error);
-        return res.status(500).json({ error: "Internal server error" });
-    }
-};
 
 const userForgetPassword = async (req, res) => {
     try {
@@ -32,7 +24,7 @@ const userForgetPassword = async (req, res) => {
             isActive: true
         });
 
-        const resetUrl = `${process.env.APP_URL || 'http://localhost:3000'}/password/resetpassword/${forgotPasswordRequest.id}`;
+        const resetUrl = `${process.env.APP_URL || 'http://localhost:3000'}/forgetpassword/resetpassword/${forgotPasswordRequest.id}`;
 
         const defaultClient = SibApiV3Sdk.ApiClient.instance;
         const apiKey = defaultClient.authentications['api-key'];
@@ -119,7 +111,6 @@ const updatePassword = async (req, res) => {
 };
 
 module.exports = {
-    getForgetPassword,
     userForgetPassword,
     getResetPassword,
     updatePassword

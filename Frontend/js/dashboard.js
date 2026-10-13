@@ -1,3 +1,4 @@
+const API_URL='http://localhost:3000';
 const expenseForm = document.getElementById('expenseForm');
 const expenseList = document.getElementById('expenseList');
 const totalText = document.getElementById('totalText');
@@ -29,7 +30,7 @@ if (getPremiumBtn) {
 
     getPremiumBtn.addEventListener('click', () => {
 
-        window.location.href = '/payment';
+        window.location.href = 'paymentPage/payment.html';
 
     });
 
@@ -105,7 +106,7 @@ async function fetchExpenses() {
         const token = localStorage.getItem('token');
         console.log('Token:', token);
 
-        const response = await fetch('/dashboard/expense', {
+        const response = await fetch(`${API_URL}/dashboard/expense`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -335,7 +336,7 @@ expenseForm.addEventListener('submit', async function (e) {
 
         if (editingExpenseId) {
 
-            response = await fetch(`/dashboard/expense/${editingExpenseId}`, {
+            response = await fetch(`${API_URL}/dashboard/expense/${editingExpenseId}`, {
                 method: 'PUT',
 
                 headers: {
@@ -355,7 +356,7 @@ expenseForm.addEventListener('submit', async function (e) {
         //Add Expense
         else {
 
-            response = await fetch('/dashboard/add', {
+            response = await fetch(`${API_URL}/dashboard/add`, {
 
                 method: 'POST',
 
@@ -433,7 +434,7 @@ async function deleteExpense(id) {
     const token = localStorage.getItem('token');
     try {
 
-        const response = await fetch(`/dashboard/expense/${id}`, {
+        const response = await fetch(`${API_URL}/dashboard/expense/${id}`, {
             method: 'DELETE',
 
             headers: {
@@ -487,7 +488,7 @@ function logout() {
 
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
-    window.location.href = '/user/login';
+    window.location.href = 'index.html';
 
 }
 

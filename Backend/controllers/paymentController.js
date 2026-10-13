@@ -4,25 +4,7 @@ const path = require("path");
 const { createOrder, getOrderStatus } = require("../services/cashfreeService");
 
 
-// PAYMENT PAGE - GET
-const getPaymentPage = async (req, res) => {
 
-    try {
-
-        return res.sendFile(
-            path.join(__dirname, "../../Frontend/paymentPage/payment.html")
-        );
-
-    } catch (error) {
-
-        console.error("Error loading payment page:", error);
-
-        return res.status(500).json({
-            success: false,
-            message: "Unable to load payment page"
-        });
-    }
-};
 
 
 // CREATE CASHFREE PAYMENT ORDER POST
@@ -32,6 +14,9 @@ const processPayment = async (req, res) => {
     try {
 
         const {amount, customerName, customerEmail, customerPhone} = req.body;
+
+        console.log('Payment request body:', req.body);
+        console.log('User ID from auth:', req.userId);
 
         // BASIC VALIDATION
 
@@ -44,8 +29,22 @@ const processPayment = async (req, res) => {
         }
 
 
-        // CALL SERVICE TO CREATE ORDER
-        const result = await createOrder(amount, customerName, customerEmail, customerPhone);
+        // CALL SERVICE TO CREATE ORDER WITH USER EMAIL
+        const user = await User.findOne({
+            where: {
+                id: req.userId
+            }
+        });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        const userEmail = user.email;
+        const result = await createOrder(amount, customerName, customerEmail, customerPhone, userEmail);
 
 
         if (result.success) {
@@ -98,6 +97,7 @@ const getPaymentStatus = async (req, res) => {
     try {
 
         const { orderId } = req.params;
+        const { user_email } = req.query;
 
         // VALIDATE ORDER ID
         if (!orderId) {
@@ -130,38 +130,20 @@ const getPaymentStatus = async (req, res) => {
         // PAYMENT SUCCESS
         if (orderStatus === "PAID") {
 
-
-            // GET LOGGED-IN USER
-
-            const user = await User.findOne({
-
-                where: {
-                    email: req.user.email
-                }
-
-            });
-
-
-            if (!user) {
-
-                return res.status(404).json({
-
-                    success: false,
-                    message: "User not found"
+            // UPDATE USER TO PREMIUM IF USER EMAIL IS PROVIDED
+            if (user_email) {
+                const user = await User.findOne({
+                    where: {
+                        email: user_email
+                    }
                 });
+
+                if (user && !user.isPremium) {
+                    user.isPremium = true;
+                    await user.save();
+                    console.log(`User ${user.email} is now Premium`);
+                }
             }
-
-
-            // MAKE USER PREMIUM
-            if (!user.isPremium) {
-
-                user.isPremium = true;
-
-                await user.save();
-
-                console.log(`User ${user.email} is now Premium`);
-            }
-
 
             // SUCCESS RESPONSE
             return res.status(200).json({
@@ -236,12 +218,8 @@ const getPaymentSuccess = async (req, res) => {
 
 module.exports = {
 
-    getPaymentPage,
-
     processPayment,
-
     getPaymentStatus,
-
     getPaymentSuccess
 
 };

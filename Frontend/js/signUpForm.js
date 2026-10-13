@@ -1,7 +1,6 @@
-
+const API = 'http://localhost:3000';
 const signUpForm = document.getElementById("signupForm");
 
-const API = window.location.origin;
 
 signUpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -33,8 +32,9 @@ signUpForm.addEventListener("submit", async (e) => {
         }
 
         alert("Signup successful");
-        
+
         signUpForm.reset();
+        window.location.href = 'index.html';
     } catch (error) {
         console.log(error);
         alert(error.message);

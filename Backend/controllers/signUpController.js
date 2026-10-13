@@ -101,28 +101,12 @@ const userSignUp = async (req, res) => {
 
 
 
-// GET request - Signup Page
-const getUserSignUp = async (req, res) => {
 
-    try {
-
-        return res.sendFile(
-            path.join(__dirname,"../../Frontend/signUpForm.html")
-        );
-
-    } catch (error) {
-
-        console.error("Error loading signup page:",error);
-
-    }
-};
 
 
 module.exports = {
 
-    userSignUp,
-
-    getUserSignUp
+    userSignUp
 
 };
 

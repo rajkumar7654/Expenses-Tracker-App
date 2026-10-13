@@ -66,14 +66,6 @@ const addExpense = async (req, res) => {
 };
 
 
-// GET DASHBOARD
-const getDashboard = async (req, res) => {
-
-    return res.sendFile(
-        path.join(__dirname, "../../Frontend/dashboard.html")
-    );
-
-};
 
 
 // GET EXPENSES BY USER
@@ -272,7 +264,6 @@ const updateExpense = async (req, res) => {
 module.exports = {
 
     addExpense,
-    getDashboard,
     getExpensesByUserId,
     deleteExpense,
     updateExpense

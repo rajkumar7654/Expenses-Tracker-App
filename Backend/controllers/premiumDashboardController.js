@@ -8,24 +8,7 @@ const { downloadReport: generatePDF } = require('../services/downloadReportDesig
 
 
 
-// Premium Dashboard - GET
-const getDashboard = async (req, res) => {
 
-    try {
-
-        return res.sendFile(
-            path.join(__dirname, '../../Frontend/premium-dashboard.html')
-        );
-
-    } catch (error) {
-
-        console.error("Error loading premium dashboard:", error);
-
-        return res.status(500).json({
-            message: "Unable to load premium dashboard"
-        });
-    }
-};
 
 
 // Add Expense - POST
@@ -285,18 +268,12 @@ const downloadReport = async (req, res) => {
 
 module.exports = {
 
-    getDashboard,
 
     addExpense,
-
     getExpensesByUserId,
-
     updateExpense,
-
     deleteExpense,
-
     getLeaderboard,
-
     downloadReport
 
 };

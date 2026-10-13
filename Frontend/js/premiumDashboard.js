@@ -1,3 +1,4 @@
+const API_URL = 'http://localhost:3000';
 const expenseForm = document.getElementById('expenseForm');
 const expenseList = document.getElementById('expenseList');
 const totalText = document.getElementById('totalText');
@@ -158,7 +159,7 @@ async function fetchExpenses() {
 
 
         const response = await fetch(
-            '/premium-dashboard/expense',
+            `${API_URL}/premium-dashboard/expense`,
             {
                 method: 'GET',
 
@@ -551,7 +552,7 @@ expenseForm.addEventListener(
             if (editingExpenseId) {
 
                 response = await fetch(
-                    `/premium-dashboard/expense/${editingExpenseId}`,
+                    `${API_URL}/premium-dashboard/expense/${editingExpenseId}`,
                     {
                         method: 'PUT',
 
@@ -582,7 +583,7 @@ expenseForm.addEventListener(
             else {
 
                 response = await fetch(
-                    '/premium-dashboard/add',
+                    `${API_URL}/premium-dashboard/add`,
                     {
                         method: 'POST',
 
@@ -704,7 +705,7 @@ async function deleteExpense(id) {
 
         const response =
             await fetch(
-                `/premium-dashboard/expense/${id}`,
+                `${API_URL}/premium-dashboard/expense/${id}`,
                 {
                     method: 'DELETE',
 
@@ -813,7 +814,7 @@ async function downloadReport() {
 
         const response =
             await fetch(
-                '/premium-dashboard/download-report',
+                `${API_URL}/premium-dashboard/download-report`,
                 {
                     headers: {
                         'Authorization':
@@ -900,7 +901,7 @@ async function fetchLeaderboardInternal() {
 
         const response =
             await fetch(
-                '/premium-dashboard/leaderboard',
+                `${API_URL}/premium-dashboard/leaderboard`,
                 {
                     method: 'GET',
 
@@ -1128,7 +1129,7 @@ function logout() {
 
 
     window.location.href =
-        '/user/login';
+        'index.html';
 
 }
 

@@ -69,28 +69,9 @@ const userLogin = async (req, res) => {
 };
 
 
-// GET request
-const getLogin = async (req, res) => {
-
-    try {
-
-        return res.sendFile(
-            path.join(__dirname, '../../Frontend/loginForm.html')
-        );
-
-    } catch (error) {
-
-        console.error("Error loading login page:", error);
-
-        return res.status(500).json({
-            error: "Internal server error"
-        });
-    }
-};
 
 
 module.exports = {
-    userLogin,
-    getLogin
+    userLogin
 };
 

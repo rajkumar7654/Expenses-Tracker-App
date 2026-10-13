@@ -1,3 +1,4 @@
+const API_URL='http://localhost:3000';
 const payButton = document.getElementById("payButton");
 const message = document.getElementById("message");
 
@@ -12,11 +13,14 @@ payButton.addEventListener("click", async function () {
         payButton.disabled = true;
         payButton.innerText = "Creating Order...";
 
+        const token = localStorage.getItem('token');
+
         // Send request to Express backend with fixed ₹1 amount
-        const response = await fetch("/payment/create-order", {
+        const response = await fetch(`${API_URL}/payment/create-order`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                 amount: "1",

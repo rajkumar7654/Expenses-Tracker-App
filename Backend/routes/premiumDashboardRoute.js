@@ -10,7 +10,6 @@ const premiumAuthMiddleware = require('../middleware/premiumAuthMiddleware');
 
 
 
-router.get('/', premiumDashboardController.getDashboard);
 router.post('/add', authMiddleware, premiumAuthMiddleware, premiumDashboardController.addExpense);
 router.get('/expense', authMiddleware, premiumAuthMiddleware, premiumDashboardController.getExpensesByUserId);
 router.put('/expense/:id', authMiddleware, premiumAuthMiddleware, premiumDashboardController.updateExpense);
