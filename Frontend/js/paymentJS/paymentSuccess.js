@@ -1,4 +1,4 @@
-const API_URL='http://localhost:3000';
+const API_URL='https://expenses-tracker-app-9mo5.onrender.com';
 async function checkStatus() {
 
     try {

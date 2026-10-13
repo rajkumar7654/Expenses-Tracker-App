@@ -1,4 +1,4 @@
-const API_URL='http://localhost:3000';
+const API_URL='https://expenses-tracker-app-9mo5.onrender.com';
 const expenseForm = document.getElementById('expenseForm');
 const expenseList = document.getElementById('expenseList');
 const totalText = document.getElementById('totalText');

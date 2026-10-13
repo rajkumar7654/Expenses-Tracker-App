@@ -1,5 +1,5 @@
 const loginForm = document.getElementById('loginForm');
-const API = 'http://localhost:3000';
+const API = 'https://expenses-tracker-app-9mo5.onrender.com';
 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
