@@ -41,7 +41,7 @@ const createOrder = async (amount, customerName, customerEmail, customerPhone, u
 
             order_meta: {
 
-                return_url: `${process.env.APP_URL || 'http://localhost:3000'}/payment/success?order_id=${orderId}&user_email=${encodeURIComponent(userEmail)}`
+                return_url: `${process.env.API || 'http://localhost:3000'}/payment/success?order_id=${orderId}&user_email=${encodeURIComponent(userEmail)}`
             }
         };
 
